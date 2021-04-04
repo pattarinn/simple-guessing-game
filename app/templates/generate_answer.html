@@ -1,0 +1,22 @@
+<!doctype html>
+<h1>word to guess</h1>
+
+{% if status %}
+    <h3>Reminder: your previous game is not finished.</h3>
+    <a href="{{ url_for("new_game") }}">new game</a>
+{% endif %}
+<hr>
+
+<span>present answer: {{ answer }}</span>
+<form action="{{ url_for('word_to_be_guessed') }}" method="POST">
+    <button type="submit" value="a" name="a">A</button>
+    <button type="submit" value="b" name="b">B</button>
+    <button type="submit" value="c" name="c">C</button>
+    <button type="submit" value="d" name="d">D</button>
+</form>
+{% if answer != "" %}
+    <a href="{{ url_for('guessing') }}">
+        <button>finish</button>
+    </a>
+{% endif %}
+
